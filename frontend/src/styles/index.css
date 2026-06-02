@@ -1,0 +1,348 @@
+/* ═══════════════════════════════════════════
+   Amunty — Design System
+   Inspired by Odysseus UI
+   ═══════════════════════════════════════════ */
+
+/* ── Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap');
+
+/* ── CSS Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Design Tokens ── */
+:root {
+  /* Core palette — Odysseus DNA */
+  --bg:     #282c34;
+  --panel:  #111;
+  --fg:     #9cdef2;
+  --border: #355a66;
+  --red:    #e06c75;
+  --green:  #50fa7b;
+  --warn:   #f0ad4e;
+
+  /* Sidebar */
+  --sidebar-bg: var(--panel);
+  --sidebar-w: 240px;
+
+  /* Brand */
+  --brand-color: var(--red);
+
+  /* Logo recolor filter — converts black PNG logo to theme accent.
+     Targets #e06c75 (--red). Override per-theme if needed.
+     Generated via: https://codepen.io/sosuke/pen/Pjoqqp  */
+  --logo-filter: invert(57%) sepia(40%) saturate(550%) hue-rotate(302deg) brightness(97%) contrast(92%);
+
+  /* Chat bubbles */
+  --user-bubble-bg: color-mix(in srgb, var(--red) 10%, var(--panel));
+  --ai-bubble-bg:   transparent;
+  --bubble-border:  color-mix(in srgb, var(--fg) 8%, transparent);
+
+  /* Input */
+  --input-bg:     color-mix(in srgb, var(--fg) 4%, var(--bg));
+  --input-border: var(--border);
+  --send-btn-bg:  var(--red);
+  --send-btn-hover: color-mix(in srgb, var(--red) 85%, black);
+
+  /* Code blocks */
+  --code-bg: #1e2228;
+  --code-fg: var(--fg);
+
+  /* Syntax highlighting */
+  --hl-bg:       #1e2228;
+  --hl-fg:       #9cdef2;
+  --hl-keyword:  #c678dd;
+  --hl-string:   #98c379;      /* green — used for h3 + inline code */
+  --hl-comment:  #828997;
+  --hl-function: #5b8def;      /* blue — h2, links, blockquotes, list markers */
+  --hl-number:   #d19a66;
+  --hl-builtin:  #e5c07b;      /* gold — h4, bold text */
+  --hl-variable: #61afef;      /* light blue — h5 */
+  --hl-params:   #abb2bf;      /* muted — italic text */
+
+  /* Semantic */
+  --color-error:   #ff4444;
+  --color-success: #4caf50;
+  --color-warning: #f0ad4e;
+  --color-accent:  #00aaff;
+  --color-muted:   #888;
+
+  /* Derived convenience aliases */
+  --accent:       var(--red);
+  --color-border-focus: var(--red);
+
+  /* Typography */
+  --font-family: 'Fira Code', monospace;
+  --font-mono:   'Fira Code', monospace;
+  --font-sans:   'Fira Code', monospace; /* same font — monospace throughout */
+
+  /* Text sizes */
+  --text-xs:   0.72rem;
+  --text-sm:   0.8rem;
+  --text-base: 0.9rem;
+  --text-lg:   1rem;
+  --text-xl:   1.2rem;
+  --text-2xl:  1.5rem;
+
+  /* Font weights */
+  --weight-light:    300;
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* Layout */
+  --sidebar-width: var(--sidebar-w);
+  --header-height: 40px;
+  --input-max-height: 200px;
+
+  /* Radii */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+
+  /* Transitions */
+  --transition-fast: 80ms ease;
+  --transition-base: 150ms ease;
+  --transition-slow: 250ms ease;
+
+  /* Toggle */
+  --toggle-bg:     color-mix(in srgb, var(--fg) 15%, transparent);
+  --toggle-active: var(--red);
+
+  /* Section accent */
+  --section-accent: color-mix(in srgb, var(--fg) 30%, transparent);
+
+  /* Scrollbar width */
+  scrollbar-width: thin;
+  scrollbar-color: var(--red) var(--panel);
+}
+
+/* ── Light mode ── */
+:root.light {
+  --bg:     #f5f5f5;
+  --fg:     #2b2b2b;
+  --panel:  #fff;
+  --border: #bbb;
+  --hl-bg:  #f9f9f9;
+  --hl-fg:  #2b2b2b;
+  --sidebar-bg: #f0f0f0;
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+  overscroll-behavior: none;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-family);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  display: flex;
+  height: 100dvh;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+body.bg-pattern-dots {
+  background-image: radial-gradient(color-mix(in srgb, var(--bg-effect-color, var(--fg)) 5%, transparent) 1px, transparent 1px);
+  background-size: 20px 20px; 
+  background-attachment: fixed;
+}
+body.bg-pattern-synapse {
+  background-image: linear-gradient(color-mix(in srgb, var(--bg-effect-color, var(--fg)) 3.5%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--bg-effect-color, var(--fg)) 3.5%, transparent) 1px, transparent 1px);
+  background-size: 24px 24px; 
+  background-attachment: fixed;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  height: 100%;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--panel); }
+::-webkit-scrollbar-thumb {
+  background-color: var(--red);
+  border-radius: 4px;
+  border: 2px solid var(--panel);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--red) 80%, white);
+}
+
+/* ── Selection ── */
+::selection {
+  background: color-mix(in srgb, var(--red) 40%, transparent);
+  color: var(--fg);
+}
+
+/* ── Focus ── */
+:focus-visible {
+  outline: 1px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* ── Links ── */
+a {
+  color: var(--fg);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover { color: white; }
+
+/* ── Typography helpers ── */
+.red-text { color: var(--red); }
+
+/* ── Code ── */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--code-bg);
+  padding: 0.12em 0.4em;
+  border-radius: var(--radius-sm);
+  color: var(--code-fg);
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--code-bg);
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* ── Input reset ── */
+input, textarea, select, button {
+  font-family: var(--font-family);
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes typing {
+  0%   { opacity: 0.3; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wave-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+.animate-fade-in  { animation: fadeIn var(--transition-slow) ease forwards; }
+.animate-pulse    { animation: pulse 1.5s ease-in-out infinite; }
+
+/* ── Modal backdrop ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(3px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 150ms ease;
+}
+
+/* ── Amunty boat logo SVG ── */
+.amunty-boat {
+  color: var(--brand-color, var(--red));
+}
+
+/* ── Admin switch (toggle) ── */
+.admin-switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.admin-switch input { opacity: 0; width: 0; height: 0; }
+.admin-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--toggle-bg);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-base);
+  cursor: pointer;
+}
+.admin-slider::before {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--fg);
+  left: 3px;
+  top: 3px;
+  transition: transform var(--transition-base);
+}
+.admin-switch input:checked + .admin-slider {
+  background: var(--toggle-active);
+}
+.admin-switch input:checked + .admin-slider::before {
+  transform: translateX(16px);
+}

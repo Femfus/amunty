@@ -1,0 +1,449 @@
+/* ── Message Bubble — Odysseus-style ── */
+
+/* ── Enter animation ── */
+@keyframes msgEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bubble {
+  margin: 8px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  max-width: 85%;
+  min-width: 80px;
+  border-radius: 12px;
+  padding: 10px 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  animation: msgEnter 0.3s ease-out both;
+}
+
+/* ── User bubble ── */
+.user {
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 8px;
+  background: var(--user-bubble-bg, color-mix(in srgb, var(--fg) 5%, transparent));
+  border: 1px solid var(--bubble-border, color-mix(in srgb, var(--fg) 10%, transparent));
+  border-radius: 12px;
+  width: fit-content;
+  max-width: 85%;
+}
+
+/* ── AI bubble ── */
+.assistant {
+  align-self: flex-start;
+  margin-right: auto;
+  margin-left: 8px;
+  background: color-mix(in srgb, var(--bg) 60%, var(--panel));
+  border: 1px solid color-mix(in srgb, var(--fg) 8%, transparent);
+  width: fit-content;
+  max-width: 85%;
+}
+
+.streaming {
+  opacity: 1;
+}
+
+/* ── Role header ── */
+.role {
+  font-weight: 600;
+  font-size: 0.82em;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.role::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--model-dot, color-mix(in srgb, var(--fg) 30%, transparent));
+  flex-shrink: 0;
+}
+
+.roleUser {
+  color: color-mix(in srgb, var(--fg) 60%, transparent);
+}
+
+.roleUser::before {
+  background: color-mix(in srgb, var(--fg) 40%, transparent);
+}
+
+.roleAssistant {
+  color: var(--hl-function, #5b8def);
+}
+
+.roleTimestamp {
+  font-weight: 400;
+  font-size: 0.85em;
+  color: color-mix(in srgb, var(--fg) 35%, transparent);
+  margin-left: auto;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.userContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.messageAttachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.messageImg {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+}
+
+.messageDoc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: color-mix(in srgb, var(--bg) 40%, var(--panel));
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  font-size: 0.85em;
+  color: color-mix(in srgb, var(--fg) 80%, transparent);
+}
+
+.userText {
+  color: var(--fg);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.95em;
+  margin: 0;
+}
+
+/* ── Markdown — colorful, scannable ── */
+.markdown {
+  line-height: 1.5;
+  color: var(--fg);
+  font-size: 0.95em;
+  width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.markdown > * {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.markdown > *:first-child {
+  margin-top: 0;
+}
+
+.markdown > *:last-child {
+  margin-bottom: 0;
+}
+
+.markdown p:empty {
+  display: none;
+}
+
+.markdown p {
+  margin-bottom: 10px;
+}
+
+.markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown img {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 8px;
+  object-fit: scale-down;
+}
+
+/* Headings — colorful like Odysseus */
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  margin: 0.6em 0 0.3em 0;
+  line-height: 1.3;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.markdown h1 {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--hl-keyword, #c678dd);
+}
+
+.markdown h2 {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--hl-function, #5b8def);
+}
+
+.markdown h3 {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--hl-string, #98c379);
+}
+
+.markdown h4 {
+  font-size: 1.02em;
+  font-weight: 600;
+  color: var(--hl-builtin, #e5c07b);
+}
+
+.markdown h5 {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--hl-variable, #61afef);
+}
+
+.markdown h6 {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--hl-number, #d19a66);
+}
+
+/* Bold — gold accent */
+.markdown strong,
+.markdown b {
+  color: var(--hl-builtin, #e5c07b);
+  font-weight: 600;
+}
+
+/* Italic — softer */
+.markdown em,
+.markdown i {
+  color: var(--hl-params, #abb2bf);
+  font-style: italic;
+}
+
+/* Bold + italic — purple */
+.markdown strong em,
+.markdown em strong {
+  color: var(--hl-keyword, #c678dd);
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0.3em 0 0.3em 1.2em;
+  padding: 0;
+}
+
+.markdown li {
+  margin: 0.15em 0;
+}
+
+.markdown li::marker {
+  color: var(--hl-function, #5b8def);
+}
+
+.markdown a {
+  color: var(--hl-function, #5b8def);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(91, 141, 239, 0.3);
+  transition: border-color 0.15s;
+}
+
+.markdown a:hover {
+  border-bottom-color: var(--hl-function, #5b8def);
+}
+
+.markdown blockquote {
+  border-left: 3px solid var(--hl-function, #5b8def);
+  padding: 4px 12px;
+  margin: 0.5em 0;
+  color: color-mix(in srgb, var(--fg) 75%, transparent);
+  background: color-mix(in srgb, var(--fg) 3%, transparent);
+  border-radius: 0 6px 6px 0;
+}
+
+.markdown blockquote p {
+  margin: 0.3em 0;
+}
+
+.markdown hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 0.8em 0;
+}
+
+/* Inline code — green */
+.inlineCode {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--hl-string, #98c379);
+  background: color-mix(in srgb, var(--fg) 6%, transparent);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+/* Code blocks */
+.codeBlock {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 4px 2px 4px;
+  overflow-x: auto;
+  margin: 8px 0;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 20px;
+  min-width: 80px;
+  max-width: 100%;
+}
+
+.codeBlock code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: var(--hl-fg);
+}
+
+/* Tables */
+.tableWrapper {
+  overflow-x: auto;
+  margin: 8px 0;
+}
+
+.table {
+  border-collapse: collapse;
+  width: auto;
+  font-size: 0.9em;
+}
+
+.table th {
+  background: color-mix(in srgb, var(--fg) 7%, transparent);
+  color: var(--hl-keyword, #c678dd);
+  font-weight: 600;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+}
+
+.table td {
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+}
+
+/* ── Streaming cursor ── */
+.cursor {
+  display: inline-block;
+  animation: blink 0.8s ease-in-out infinite;
+  color: var(--red);
+  margin-left: 2px;
+  font-size: 0.9em;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* ── Footer ── */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid color-mix(in srgb, var(--fg) 6%, transparent);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.bubble:hover .footer {
+  opacity: 1;
+}
+
+.footerBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
+  border-radius: 4px;
+  color: color-mix(in srgb, var(--fg) 50%, transparent);
+  cursor: pointer;
+  font-size: 0.75em;
+  font-family: var(--font-family);
+  padding: 2px 8px;
+  transition: all 0.12s ease;
+}
+
+.footerBtn:hover {
+  color: var(--fg);
+  border-color: color-mix(in srgb, var(--fg) 30%, transparent);
+  background: color-mix(in srgb, var(--fg) 5%, transparent);
+}
+
+.footerBtn svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* ── Meta (timestamp, model on user messages) ── */
+.meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+  padding: 0 2px;
+}
+
+.metaItem {
+  font-size: var(--text-xs);
+  color: color-mix(in srgb, var(--fg) 25%, transparent);
+}
+
+/* Mobile Support */
+@media (max-width: 768px) {
+  .user, .assistant {
+    max-width: 95%;
+  }
+
+  .userText, .markdown {
+    font-size: 1em;
+  }
+
+  .role {
+    font-size: 0.85em;
+  }
+}

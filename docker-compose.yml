@@ -1,0 +1,38 @@
+services:
+  amunty:
+    build: .
+    ports:
+      - "${APP_PORT:-7000}:7000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///app/data/amunty.db
+      - CHROMADB_URL=http://chromadb:8000
+      - WORKSPACE_DIR=/app/data/workspace
+      - SEARXNG_URL=http://searxng:8080
+      - AUTH_ENABLED=${AUTH_ENABLED:-true}
+    depends_on:
+      chromadb:
+        condition: service_healthy
+      searxng:
+        condition: service_started
+
+  chromadb:
+    image: chromadb/chroma:0.5.23
+    volumes:
+      - chroma_data:/chroma/chroma
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  searxng:
+    image: searxng/searxng:latest
+    volumes:
+      - ./config/searxng:/etc/searxng
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8080/
+
+volumes:
+  chroma_data:

@@ -1,0 +1,114 @@
+.container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 380px;
+  width: calc(100vw - 40px);
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--panel, #111);
+  border: 1px solid var(--border, #355a66);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: var(--shadow-lg);
+  color: var(--fg, #9cdef2);
+  padding: 12px 16px;
+  pointer-events: auto;
+  animation: slideIn 0.2s ease forwards;
+  transition: all 0.15s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.message {
+  margin: 0;
+  font-size: var(--text-sm, 0.8rem);
+  font-weight: var(--weight-medium, 500);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.progressContainer {
+  height: 4px;
+  background: color-mix(in srgb, var(--fg) 10%, transparent);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  width: 100%;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--red, #e06c75);
+  border-radius: var(--radius-full);
+  transition: width 0.1s linear;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: var(--fg);
+  opacity: 0.5;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast);
+}
+
+.closeBtn:hover {
+  opacity: 0.9;
+}
+
+/* Toast types colors */
+.success {
+  border-left: 4px solid var(--green, #50fa7b);
+}
+
+.error {
+  border-left: 4px solid var(--red, #e06c75);
+}
+
+.loading {
+  border-left: 4px solid var(--accent, #00aaff);
+}
+
+.info {
+  border-left: 4px solid var(--fg, #9cdef2);
+}

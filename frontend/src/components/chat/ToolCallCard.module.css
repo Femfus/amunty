@@ -1,0 +1,154 @@
+/* ── Tool Call Card — Odysseus-style agent thread node ── */
+
+@keyframes toolSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes toolEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  background: color-mix(in srgb, var(--red) 12%, black);
+  border: 1px solid color-mix(in srgb, var(--red) 30%, transparent);
+  border-radius: 8px;
+  animation: toolEnter 0.25s ease-out both;
+  position: relative;
+}
+
+.card.done {
+  background: transparent;
+  border: none;
+  border-left: 2px solid color-mix(in srgb, var(--red) 40%, transparent);
+  border-radius: 0;
+  padding: 4px 12px;
+}
+
+.card.error {
+  border-color: var(--color-error, #ff4444);
+}
+
+.card.running {
+  border-color: var(--red);
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.icon {
+  font-size: 0.8em;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.icon.running {
+  color: var(--red);
+}
+
+.icon.done {
+  color: var(--red);
+}
+
+.icon.error {
+  color: var(--color-error, #ff4444);
+}
+
+.toolName {
+  font-weight: 600;
+  font-size: 0.82em;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.status {
+  font-size: 0.72em;
+  color: color-mix(in srgb, var(--fg) 30%, transparent);
+  margin-left: auto;
+}
+
+.chevron {
+  font-size: 0.7em;
+  color: color-mix(in srgb, var(--fg) 30%, transparent);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.chevron.open {
+  transform: rotate(90deg);
+}
+
+/* Expandable content */
+.content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.2s ease, opacity 0.15s ease, margin 0.15s ease;
+  margin-top: 0;
+}
+
+.content.open {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 6px;
+  overflow-y: auto;
+}
+
+.params {
+  font-family: var(--font-mono);
+  font-size: 0.75em;
+  color: color-mix(in srgb, var(--fg) 60%, transparent);
+  background: color-mix(in srgb, var(--fg) 4%, transparent);
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-break: break-all;
+  margin-bottom: 4px;
+}
+
+.output {
+  font-family: var(--font-mono);
+  font-size: 0.75em;
+  color: var(--fg);
+  background: var(--code-bg, #1e2228);
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.spinner {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--border);
+  border-top-color: var(--red);
+  border-radius: 50%;
+  animation: toolSpin 0.8s linear infinite;
+}

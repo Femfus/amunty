@@ -1,0 +1,133 @@
+/* ── Login Page — Odysseus-style ── */
+
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100dvh;
+  width: 100%;
+  background: var(--bg);
+  padding-top: 15vh;
+  font-family: var(--font-family);
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 360px;
+  max-width: 92vw;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.logoIcon {
+  color: var(--brand-color, var(--red));
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: linear-gradient(
+    135deg,
+    var(--brand-color, var(--red)),
+    color-mix(in srgb, var(--brand-color, var(--red)) 60%, var(--fg))
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--fg) 50%, transparent);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  color: color-mix(in srgb, var(--fg) 65%, transparent);
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--fg);
+  font-size: 0.95rem;
+  font-family: var(--font-family);
+  outline: none;
+  transition: border-color 80ms ease;
+}
+
+.input:focus {
+  border-color: var(--red);
+}
+
+.input::placeholder {
+  color: color-mix(in srgb, var(--fg) 30%, transparent);
+}
+
+.error {
+  color: #e55;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.button {
+  width: 100%;
+  padding: 0.72rem 0.7rem 0.68rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--red);
+  color: #fff;
+  font-size: 1rem;
+  font-family: var(--font-family);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 80ms ease;
+}
+
+.button:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--red) 85%, black);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.hint {
+  font-size: 0.72rem;
+  color: color-mix(in srgb, var(--fg) 35%, transparent);
+  margin-top: 1.2rem;
+  text-align: center;
+  line-height: 1.5;
+}

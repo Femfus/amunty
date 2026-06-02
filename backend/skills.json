@@ -1,0 +1,509 @@
+[
+  {
+    "id": "builtin-time",
+    "name": "Check Time",
+    "description": "Get the current date, time, and timezone",
+    "emoji": "\ud83d\udd50",
+    "triggers": [
+      "what time",
+      "current time",
+      "time is it",
+      "what's the time",
+      "whats the time",
+      "tell me the time"
+    ],
+    "tool_name": "get_current_time",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-date",
+    "name": "Check Date",
+    "description": "Get today's date and day of the week",
+    "emoji": "\ud83d\udcc5",
+    "triggers": [
+      "what day",
+      "what date",
+      "today's date",
+      "what is today",
+      "whats today"
+    ],
+    "tool_name": "get_current_time",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-battery",
+    "name": "Check Battery",
+    "description": "Check laptop battery level and charging status",
+    "emoji": "\ud83d\udd0b",
+    "triggers": [
+      "battery",
+      "charge level",
+      "power level",
+      "how much charge"
+    ],
+    "tool_name": "get_system_info",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-sysinfo",
+    "name": "System Info",
+    "description": "Get CPU, memory, disk usage, and system specs",
+    "emoji": "\ud83d\udcbb",
+    "triggers": [
+      "system info",
+      "cpu usage",
+      "ram usage",
+      "memory usage",
+      "disk space",
+      "how much storage",
+      "how much memory",
+      "how much ram",
+      "free space",
+      "system status",
+      "computer specs",
+      "my specs"
+    ],
+    "tool_name": "get_system_info",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-processes",
+    "name": "Running Processes",
+    "description": "List top processes by memory or CPU usage",
+    "emoji": "\ud83d\udcca",
+    "triggers": [
+      "running processes",
+      "top processes",
+      "what processes",
+      "task manager",
+      "what's running",
+      "whats running",
+      "using the most memory",
+      "using the most cpu"
+    ],
+    "tool_name": "get_running_processes",
+    "tool_args": {
+      "sort_by": "memory",
+      "limit": 10
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-notification",
+    "name": "Send Notification",
+    "description": "Send a Windows desktop notification",
+    "emoji": "\ud83d\udd14",
+    "triggers": [
+      "notification",
+      "toast",
+      "notify me",
+      "alert me",
+      "send alert"
+    ],
+    "tool_name": "show_notification",
+    "tool_args": {
+      "title": "Amunty",
+      "message": "Hello from Amunty! \ud83d\udc4b"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-reminder",
+    "name": "Set Reminder",
+    "description": "Set a timed reminder with a Windows notification",
+    "emoji": "\u23f0",
+    "triggers": [
+      "remind me",
+      "set reminder",
+      "set alarm",
+      "reminder in"
+    ],
+    "tool_name": "set_reminder",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-weather",
+    "name": "Check Weather",
+    "description": "Get current weather for any city",
+    "emoji": "\ud83c\udf24\ufe0f",
+    "triggers": [
+      "weather",
+      "temperature outside",
+      "is it going to rain",
+      "how hot",
+      "how cold"
+    ],
+    "tool_name": "get_weather",
+    "tool_args": {
+      "location": ""
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-notepad",
+    "name": "Open Notepad",
+    "description": "Launch Notepad text editor",
+    "emoji": "\ud83d\udcdd",
+    "triggers": [
+      "open notepad",
+      "launch notepad",
+      "start notepad"
+    ],
+    "tool_name": "open_application",
+    "tool_args": {
+      "name": "notepad"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-calc",
+    "name": "Open Calculator",
+    "description": "Launch the Calculator app",
+    "emoji": "\ud83e\uddee",
+    "triggers": [
+      "open calculator",
+      "launch calculator",
+      "open calc"
+    ],
+    "tool_name": "open_application",
+    "tool_args": {
+      "name": "calculator"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-terminal",
+    "name": "Open Terminal",
+    "description": "Launch Windows Terminal or Command Prompt",
+    "emoji": "\u2b1b",
+    "triggers": [
+      "open terminal",
+      "open cmd",
+      "open command prompt",
+      "launch terminal"
+    ],
+    "tool_name": "open_application",
+    "tool_args": {
+      "name": "terminal"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-explorer",
+    "name": "Open File Explorer",
+    "description": "Launch File Explorer",
+    "emoji": "\ud83d\udcc1",
+    "triggers": [
+      "open file explorer",
+      "open explorer",
+      "open files",
+      "open my files"
+    ],
+    "tool_name": "open_application",
+    "tool_args": {
+      "name": "file explorer"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-settings",
+    "name": "Open Settings",
+    "description": "Open Windows Settings",
+    "emoji": "\u2699\ufe0f",
+    "triggers": [
+      "open settings",
+      "open windows settings",
+      "system settings"
+    ],
+    "tool_name": "open_application",
+    "tool_args": {
+      "name": "settings"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-paint",
+    "name": "Open Paint",
+    "description": "Launch Paint",
+    "emoji": "\ud83c\udfa8",
+    "triggers": [
+      "open paint",
+      "launch paint"
+    ],
+    "tool_name": "open_application",
+    "tool_args": {
+      "name": "paint"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-taskmgr",
+    "name": "Open Task Manager",
+    "description": "Launch Task Manager",
+    "emoji": "\ud83d\udccb",
+    "triggers": [
+      "open task manager"
+    ],
+    "tool_name": "open_application",
+    "tool_args": {
+      "name": "task manager"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-youtube",
+    "name": "Open YouTube",
+    "description": "Open YouTube in the browser",
+    "emoji": "\u25b6\ufe0f",
+    "triggers": [
+      "open youtube",
+      "go to youtube"
+    ],
+    "tool_name": "open_url",
+    "tool_args": {
+      "url": "youtube.com"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-google",
+    "name": "Open Google",
+    "description": "Open Google in the browser",
+    "emoji": "\ud83d\udd0d",
+    "triggers": [
+      "open google",
+      "go to google"
+    ],
+    "tool_name": "open_url",
+    "tool_args": {
+      "url": "google.com"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-github",
+    "name": "Open GitHub",
+    "description": "Open GitHub in the browser",
+    "emoji": "\ud83d\udc19",
+    "triggers": [
+      "open github",
+      "go to github"
+    ],
+    "tool_name": "open_url",
+    "tool_args": {
+      "url": "github.com"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-gmail",
+    "name": "Open Gmail",
+    "description": "Open Gmail in the browser",
+    "emoji": "\ud83d\udce7",
+    "triggers": [
+      "open gmail",
+      "check email",
+      "check my email"
+    ],
+    "tool_name": "open_url",
+    "tool_args": {
+      "url": "gmail.com"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-open-reddit",
+    "name": "Open Reddit",
+    "description": "Open Reddit in the browser",
+    "emoji": "\ud83e\udd16",
+    "triggers": [
+      "open reddit",
+      "go to reddit"
+    ],
+    "tool_name": "open_url",
+    "tool_args": {
+      "url": "reddit.com"
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-clipboard-read",
+    "name": "Read Clipboard",
+    "description": "Read the current clipboard text content",
+    "emoji": "\ud83d\udccb",
+    "triggers": [
+      "what's in my clipboard",
+      "whats in my clipboard",
+      "clipboard content",
+      "read clipboard",
+      "show clipboard",
+      "paste"
+    ],
+    "tool_name": "get_clipboard",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-listdir",
+    "name": "List Files",
+    "description": "List files and folders in a directory",
+    "emoji": "\ud83d\udcc2",
+    "triggers": [
+      "list files",
+      "show files",
+      "what's on my desktop"
+    ],
+    "tool_name": "list_directory",
+    "tool_args": {
+      "path": "."
+    },
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:47:22.725234+00:00"
+  },
+  {
+    "id": "builtin-media-current",
+    "name": "Check Playing Song",
+    "description": "Get details about the song or media currently playing on the computer",
+    "emoji": "\ud83c\udfb5",
+    "triggers": [
+      "what song",
+      "what's playing",
+      "whats playing",
+      "current song",
+      "song is playing",
+      "music is playing",
+      "currently playing"
+    ],
+    "tool_name": "get_current_playing_media",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:53:12.475692+00:00"
+  },
+  {
+    "id": "builtin-media-control",
+    "name": "Control Playback",
+    "description": "Play, pause, next, or skip system media tracks",
+    "emoji": "\u23ef\ufe0f",
+    "triggers": [
+      "skip song",
+      "next song",
+      "next track",
+      "skip track",
+      "previous song",
+      "prev song",
+      "previous track",
+      "pause music",
+      "play music",
+      "resume music"
+    ],
+    "tool_name": "control_media",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:53:12.475692+00:00"
+  },
+  {
+    "id": "builtin-volume-control",
+    "name": "Control Volume",
+    "description": "Increase system volume, decrease it, or toggle mute",
+    "emoji": "\ud83d\udd0a",
+    "triggers": [
+      "volume up",
+      "increase volume",
+      "louder",
+      "volume down",
+      "decrease volume",
+      "quieter",
+      "softer",
+      "mute",
+      "unmute"
+    ],
+    "tool_name": "control_volume",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:53:12.475692+00:00"
+  },
+  {
+    "id": "builtin-app-close",
+    "name": "Close App",
+    "description": "Close and terminate a running application process by name",
+    "emoji": "\u274c",
+    "triggers": [
+      "close notepad",
+      "exit calculator",
+      "close chrome",
+      "close settings"
+    ],
+    "tool_name": "close_application",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:53:12.475692+00:00"
+  },
+  {
+    "id": "builtin-music-play",
+    "name": "Play Music",
+    "description": "Search and play a song or artist on YouTube or Spotify",
+    "emoji": "\ud83c\udfb6",
+    "triggers": [
+      "play song",
+      "play spotify",
+      "play youtube"
+    ],
+    "tool_name": "play_music",
+    "tool_args": {},
+    "enabled": true,
+    "source": "built-in",
+    "created_at": "2026-06-02T03:53:12.475692+00:00"
+  }
+]

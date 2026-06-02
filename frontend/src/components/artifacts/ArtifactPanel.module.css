@@ -1,0 +1,124 @@
+.panel {
+  flex: 1;
+  max-width: 45vw;
+  min-width: 400px;
+  background: color-mix(in srgb, var(--bg) 60%, var(--panel));
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  position: relative;
+  z-index: 10;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.2);
+}
+
+.header {
+  height: 48px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background: var(--panel);
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+}
+
+.tabActive {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-top: 2px solid var(--red);
+  background: color-mix(in srgb, var(--bg) 60%, var(--panel));
+  color: var(--fg);
+  font-size: 0.8rem;
+  font-family: var(--font-family);
+  font-weight: 500;
+}
+
+.addTabBtn {
+  background: transparent;
+  border: none;
+  color: color-mix(in srgb, var(--fg) 50%, transparent);
+  cursor: pointer;
+  font-size: 1.2rem;
+  padding: 4px 8px;
+}
+
+.addTabBtn:hover {
+  color: var(--fg);
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 24px;
+}
+
+.codeBlock {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--fg) 80%, transparent);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre;
+}
+
+.footer {
+  height: 48px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background: var(--panel);
+}
+
+.footerLeft, .footerRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconBtn, .actionBtn, .closeBtn {
+  background: transparent;
+  border: none;
+  color: color-mix(in srgb, var(--fg) 70%, transparent);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-family: var(--font-family);
+  transition: color 0.15s;
+}
+
+.iconBtn:hover, .actionBtn:hover, .closeBtn:hover {
+  color: var(--fg);
+}
+
+.actionBtn {
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.actionBtn:hover {
+  background: color-mix(in srgb, var(--fg) 12%, transparent);
+}
+
+.formatSelect {
+  background: color-mix(in srgb, var(--bg) 40%, var(--panel));
+  border: 1px solid var(--border);
+  color: var(--fg);
+  font-size: 0.8rem;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}

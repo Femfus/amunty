@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="description" content="Amunty — Self-hosted AI workspace. Chat with local and remote AI models, with tools, memory, and privacy." />
+    <meta name="theme-color" content="#0f1117" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>Amunty</title>
+  </head>
+  <body>
+    <!-- Loading overlay — hides all flashing until app is ready -->
+    <div id="app-loader" style="position:fixed;inset:0;z-index:99999;background:var(--bg,#282c34);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transition:opacity .3s">
+      <div id="loader-wave" style="color:var(--brand-color,var(--red,#e06c75));font-family:monospace;font-size:11px;opacity:.5">▁▂▃</div>
+    </div>
+    <script>
+    (function(){
+      var el=document.getElementById('loader-wave');
+      if(!el)return;
+      var frames=['▁▂▃','▂▃▄','▃▄▅','▄▅▆','▅▆▅','▆▅▄','▅▄▃','▄▃▂','▃▂▁'];
+      var i=0;
+      var iv=setInterval(function(){
+        if(!document.getElementById('app-loader')){clearInterval(iv);return}
+        el.textContent=frames[i%frames.length];
+        i++;
+      },150);
+    })();
+    window.addEventListener('error', function() {
+      var loader = document.getElementById('app-loader');
+      if(loader) loader.remove();
+    });
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
