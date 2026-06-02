@@ -1,53 +1,25 @@
-<img width="200" height="117" alt="amunty-logo" src="https://github.com/user-attachments/assets/856899a4-f2e2-4174-88fe-5587b3201b8d" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/856899a4-f2e2-4174-88fe-5587b3201b8d" alt="Amunty Logo">
+</p>
+
 # Amunty
 
-A self-hosted, local-first AI workspace — think ChatGPT, but running on your hardware with your data.
+Amunty is a self-hosted, local-first AI workspace. Think of it as your own personal ChatGPT that runs entirely on your hardware, keeping your data private and secure on your disk.
+
+## Features
+
+- **Chat** — Multi-turn conversations with streaming responses, markdown rendering, and code highlighting.
+- **Model Gateway** — Connect to Ollama, vLLM, llama.cpp, OpenAI, OpenRouter, and more via a unified settings UI.
+- **Memory** — Persistent vector memory (ChromaDB) allows the AI to learn about you over time.
+- **Tools** — Extensible tools for web search, URL reading, file operations, and more via tool manifests.
+- **Local-first** — All data stays on disk using SQLite and ChromaDB. No cloud dependencies.
 
 ## Quick Start
 
+Get Amunty running in minutes:
+
 ```bash
-git clone https://github.com/you/amunty.git
+git clone https://github.com/Femfus/amunty.git
 cd amunty
 cp .env.example .env
 docker compose up -d --build
-```
-
-Open `http://localhost:7000` after the containers are healthy.  
-The admin password is auto-generated and printed in the logs:
-
-```bash
-docker compose logs amunty | grep "Admin password"
-```
-
-## Features (MVP)
-
-- **Chat** — Multi-turn conversations with streaming responses, markdown rendering, code highlighting
-- **Model Gateway** — Connect Ollama, vLLM, llama.cpp, OpenAI, OpenRouter — all via a unified settings UI
-- **Memory** — Persistent vector memory (ChromaDB) — the AI learns about you over time
-- **Tools** — Web search, URL reading, file operations — extensible via tool manifests
-- **Local-first** — All data stays on disk. SQLite + ChromaDB. No cloud dependencies.
-
-## Architecture
-
-```
-Browser (React PWA)
-    ↕ HTTP / SSE
-FastAPI Gateway
-    ↕
-┌─────────────┬──────────────┬─────────────┐
-│ chat_engine │ tool_executor│ memory_store │
-│             │              │              │
-│ model_gateway              │  ChromaDB    │
-│ (Ollama/OpenAI/vLLM)       │  (fastembed) │
-└─────────────┴──────────────┴─────────────┘
-    ↕
-SQLite (WAL mode)
-```
-
-## Configuration
-
-All settings are manageable from the browser Settings panel. Only touch `.env` for deployment-level overrides.
-
-## License
-
-MIT
