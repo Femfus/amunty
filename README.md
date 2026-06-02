@@ -1,3 +1,4 @@
+<img width="200" height="117" alt="amunty-logo" src="https://github.com/user-attachments/assets/856899a4-f2e2-4174-88fe-5587b3201b8d" />
 # Amunty
 
 A self-hosted, local-first AI workspace — think ChatGPT, but running on your hardware with your data.
